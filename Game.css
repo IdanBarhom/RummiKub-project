@@ -1,0 +1,53 @@
+#game-board {
+    display: flex; /* Arrange players in a row */
+    width: 100%; /* Take up full width */
+    height: 100vh; /* Take up full viewport height */
+    align-items: center;
+    justify-content: center;
+  }
+  #player-top
+  {
+    align-self: flex-start;
+    rotate: 180deg;
+  }
+  #player-left{
+    rotate: 90deg;
+  }
+  #player-right{
+    rotate: 270deg;
+  }
+  #player-top,
+  #player-left,
+  #player-right,
+  #player-me {
+    flex: 1; /* Distribute space equally among players */
+    border: 1px solid #ccc; /* Add a border for visibility */
+    padding: 10px; /* Add some padding */
+  }
+  
+  #player-me {
+    /* Style for the current player */
+    background-color: #f0f0f0; /* Highlight current player */
+    align-self: flex-end;
+  }
+  
+  .active-player {
+    /* Additional styles for the active player (optional) */
+  }
+
+  #cards{
+    flex-wrap: wrap;
+    
+  }
+  #card{
+    height: 60px;
+    width: 40px;
+    color: blue;
+    background-color: red;
+  }
+
+  #Deck
+  {
+    justify-self: flex-start;
+
+  }

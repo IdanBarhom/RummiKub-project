@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./MainPage.css">    
+    <title>Document</title>
+</head>
+<body>
+<div id="container">
+    
+    <form action="play" required="true">
+            <input type="text" id="playerName" placeholder="Name of player" required="true" minlength="4"><br>
+        <div class="radio-group" required="true">
+            <p>Number Of Players:</p><br>
+            <input type="radio" id="amount1" name="num_of_players" value="2" required="true">
+            <label for="amount1" class="radio-label">2</label><br>
+            <input type="radio" id="amount2" name="num_of_players" value="3" required="true">
+            <label for="amount2" class="radio-label">3</label><br>
+            <input type="radio" id="amount3" name="num_of_players" value="4" required="true">
+            <label for="amount3" class="radio-label">4</label>
+        </div>
+            <input type="submit" value="Start">
+    </form>
+    
+
+</div>
+
+    
+</body>
+</html>
