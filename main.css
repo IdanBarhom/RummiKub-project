@@ -1,0 +1,110 @@
+body{
+    height:100%;
+    width: 100%;
+    margin: 0;
+}
+#container{
+    height:600px;
+    width: 800px;
+    position: relative;
+    align-content: center;
+    
+}
+#main{
+    background-color: aqua;
+    height:200px;
+    width: 300px;
+    display:flex;
+    flex-direction: column;
+    visibility: visible;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 25%;
+    left:40%
+}
+.radio-label {
+
+    display: inline-block;
+    justify-content: center
+  }
+
+  #game {
+    height:600px;
+    width: 1000px;
+    position: absolute;
+    visibility: hidden;
+    left: 15%;
+    top: 20px;
+  }
+  #player-0 {
+    background-color: #f0f0f0; 
+   top: 90%;
+   left: 50%;
+  }
+
+   #player-1
+  {
+    left: 50%;
+    rotate: 180deg;
+    
+  }
+  #player-2{
+    top: 50%;
+    rotate: 90deg;
+  }
+  #player-3{
+    top: 50%;
+    left: 94%;
+    rotate: 270deg;
+  } 
+    #player-1,
+  #player-2,
+  #player-3,
+  #player-0 {
+    position: absolute;
+    flex: 1; 
+    border: 1px solid #ccc; 
+    padding: 10px; 
+  }
+  
+  #cards{
+    flex-wrap: wrap;
+    
+  }
+ 
+  #card{
+
+    min-height: 60px;
+    height: 8.5vh;
+    background-color: burlywood;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: row;
+    padding: 10px 15px;
+    border-color: black;
+    border-style: solid;
+
+  }
+
+  #draw
+  {
+    position: fixed;
+    top: 80%;
+    left: 70%;
+  }
+  #sort-deck{
+    position: fixed;
+    top: 88%;
+    left: 70%;
+  }
+
+  .board{
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 200px;
+    min-height: 50px;
+    max-width:300px;
+    gap: 2px;
+    background-color: burlywood;
+  }
