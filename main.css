@@ -4,6 +4,198 @@ body{
     margin: 0;
     background-color: blanchedalmond;
 }
+
+#main{
+    background-color: aqua;
+    height:200px;
+    width: 300px;
+    display:flex;
+    flex-direction: column;
+    visibility: visible;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 25%;
+    left:40%
+}
+.radio-label {
+
+    display: inline-block;
+    justify-content: center
+  }
+
+  #game {
+    border: 1px solid black;
+    height: 800px;
+    width: 1350px;
+    position: absolute;
+    visibility: hidden;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    
+  }
+  #player-0 {
+   bottom: 0;
+   left: 35%;
+   position: absolute;
+
+  }
+
+   #player-1
+  {
+    position: absolute;
+    top: 0;
+    left: 35%;
+    rotate: 180deg;
+    
+  }
+  #player-2{
+    position: absolute;
+    left: -12.8%;
+    top:40%;
+    
+    rotate: 90deg;
+  }
+  #player-3{
+    position: absolute;
+
+    right: -12.8%;
+    top:40%;
+    rotate: 270deg;
+  } 
+   
+  
+  #cards{
+    flex-wrap: wrap;
+    
+  }
+ 
+  #card{
+
+    min-height: 40px;
+    height: 8.5vh;
+    
+    border-radius: 7px;
+    display: flex;
+    flex-direction: row;
+    
+    border-color: black;
+    border-style: solid;
+
+  }
+
+  /* #draw
+  {
+    position: fixed;
+    top: 80%;
+    left: 70%;
+  }
+  #sort-deck{
+    position: fixed;
+    top: 88%;
+    left: 70%;
+  } */
+  .exit{
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .board{
+    
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 200px;
+    min-height: 50px;
+    max-width:500px;
+    gap: 2px;
+    background-color: burlywood;
+    
+  }
+  /* .board2{
+    
+    display: flex;
+    flex-wrap: wrap;
+    width: 600px ;
+    height: 200px;
+    gap: 2px;
+    background-color: burlywood;
+    
+  } */
+
+  #message{
+    font-family: Arial, Helvetica, sans-serif;
+    color: red;
+  }
+
+#buttons{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+
+#table
+{
+  width: 754px;
+  height: 480px;
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  border: 1px solid black;
+}
+#floor
+{
+  display: grid;
+  
+  grid-template-columns: 58px 58px 58px 58px 58px 58px 58px 58px 58px 58px 58px 58px 58px;
+  grid-template-rows: 80px 80px 80px 80px 80px 80px;
+  
+    border: 1px solid black;
+    
+    
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+  body{
+    height:100%;
+    width: 100%;
+    margin: 0;
+    background-color: blanchedalmond;
+}
 #container{
     height:600px;
     width: 800px;
@@ -31,50 +223,54 @@ body{
   }
 
   #game {
-    height:600px;
+    height: 800px;
     width: 1000px;
     position: absolute;
     visibility: hidden;
-    left: 15%;
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-rows: 1fr 4fr 1fr;
+    gap: 3rem;
+    left: 20%;
     top: 20px;
   }
   #player-0 {
-   top: 70%;
-   left: 50%;
-  }
-
-   #player-1
-  {
-    left: 50%;
-    rotate: 180deg;
+    grid-area:3/2 ;
     
   }
+   #player-1
+  {
+    order: 1;
+    rotate: 180deg;
+  }
   #player-2{
-    top: 50%;
-    rotate: 90deg;
+    grid-area:2/1 ;
+    order: 2;
+    /* rotate: 90deg; 
   }
   #player-3{
-    top: 50%;
-    left: 94%;
-    rotate: 270deg;
+    grid-area:2/3 ;
   } 
-    #player-1,
+  #exit-button
+  {
+    order: 0;
+  }
+  #table{
+    grid-area:2/2 ;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+     #player-1,
   #player-2,
   #player-3,
   #player-0 {
-    position: absolute;
-    flex: 1; 
-    border: 1px solid #ccc; 
-    padding: 10px; 
-  }
+    background-color: burlywood;
+  } 
   
-  #cards{
-    flex-wrap: wrap;
-    
-  }
- 
   #card{
-
+    cursor:grab;
+    user-select: none;
     min-height: 40px;
     height: 8.5vh;
     background-color: burlywood;
@@ -87,7 +283,10 @@ body{
 
   }
 
-  #draw
+  #buttons{
+    grid-area:3/3 ;
+  }
+   #draw
   {
     position: fixed;
     top: 80%;
@@ -97,19 +296,22 @@ body{
     position: fixed;
     top: 88%;
     left: 70%;
-  }
+  } 
 
-  .board{
+   .board{
     display: flex;
     flex-wrap: wrap;
-    min-width: 200px;
-    min-height: 50px;
-    max-width:500px;
     gap: 2px;
     background-color: burlywood;
-  }
+    border-radius: 5px;
+  } 
 
   #message{
     font-family: Arial, Helvetica, sans-serif;
     color: red;
   }
+
+
+   */
+
+  
