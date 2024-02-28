@@ -2,6 +2,7 @@ body{
     height:100%;
     width: 100%;
     margin: 0;
+    background-color: blanchedalmond;
 }
 #container{
     height:600px;
@@ -38,8 +39,7 @@ body{
     top: 20px;
   }
   #player-0 {
-    background-color: #f0f0f0; 
-   top: 90%;
+   top: 70%;
    left: 50%;
   }
 
@@ -75,13 +75,13 @@ body{
  
   #card{
 
-    min-height: 60px;
+    min-height: 40px;
     height: 8.5vh;
     background-color: burlywood;
     border-radius: 7px;
     display: flex;
     flex-direction: row;
-    padding: 10px 15px;
+    
     border-color: black;
     border-style: solid;
 
@@ -104,7 +104,12 @@ body{
     flex-wrap: wrap;
     min-width: 200px;
     min-height: 50px;
-    max-width:300px;
+    max-width:500px;
     gap: 2px;
     background-color: burlywood;
+  }
+
+  #message{
+    font-family: Arial, Helvetica, sans-serif;
+    color: red;
   }
