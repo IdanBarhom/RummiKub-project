@@ -37,7 +37,7 @@ body{
   }
   #player-0 {
    bottom: 0;
-   left: 35%;
+   left: 30%;
    position: absolute;
 
   }
@@ -46,7 +46,7 @@ body{
   {
     position: absolute;
     top: 0;
-    left: 35%;
+    left: 30%;
     rotate: 180deg;
     
   }
@@ -66,36 +66,62 @@ body{
   } 
    
   
-  #cards{
+  /* #cards{
     flex-wrap: wrap;
     
-  }
+  } */
  
-  #card{
-
-    min-height: 40px;
-    height: 8.5vh;
-    
+  .card{
+    height: 75px;
+    width: 58px;
+    z-index: 2;
     border-radius: 7px;
-    display: flex;
-    flex-direction: row;
+     display: flex;
+    flex-direction: row; 
     
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("/pics/0.svg");
     border-color: black;
     border-style: solid;
 
   }
 
-  /* #draw
+   #draw
   {
-    position: fixed;
-    top: 80%;
-    left: 70%;
+    font-family:cursive;
+    background-position: center;
+    font-size: large;
+    color: black;
+    background-size: cover;
+   background-image: url("/pics/0.svg");
+   position: relative;
+   height: 75px;
+    width: 58px;
   }
-  #sort-deck{
-    position: fixed;
-    top: 88%;
-    left: 70%;
-  } */
+
+  #s777{
+    font-family:cursive;
+    font-size: x-large;
+    color:#1F618D ;
+    background-size: cover;
+    background-image: url("/pics/0.svg");
+
+    position: relative;
+    height: 75px;
+     width: 58px;
+  }
+  #s789{
+    font-family:cursive;
+    font-size: x-large;
+    color:#1F618D ;
+    background-size: cover;
+    background-image: url("/pics/0.svg");
+    position: relative;
+    height: 75px;
+     width: 58px;
+  }
+  
   .exit{
     position: absolute;
     top: 0;
@@ -106,9 +132,8 @@ body{
     
     display: flex;
     flex-wrap: wrap;
-    min-width: 200px;
-    min-height: 50px;
-    max-width:500px;
+    height: 159px;
+    width: 522px;
     gap: 2px;
     background-color: burlywood;
     
@@ -148,10 +173,12 @@ body{
 }
 #floor
 {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  /* display: grid;
   
   grid-template-columns: 58px 58px 58px 58px 58px 58px 58px 58px 58px 58px 58px 58px 58px;
-  grid-template-rows: 80px 80px 80px 80px 80px 80px;
+  grid-template-rows: 80px 80px 80px 80px 80px 80px; */
   
     border: 1px solid black;
     
