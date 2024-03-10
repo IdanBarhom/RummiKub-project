@@ -37,7 +37,7 @@ let handPlayer3=[];
 let message=$("#message");
 let tableArray=[];
 const playerBoard= document.querySelectorAll('.board');
-var floor;
+
 //////////////////////verify//////////////////////////
 function verify(){
     n=$('input[name="num_of_players"]:checked').val();
@@ -67,15 +67,15 @@ function Start(){
    setDeck();
    Shuffle(cardsArray);
    deal_cards(n,deck);
+   makeTable();
    turn();
-    //makeTable();
 };
 function makeTable(){
     for (i=0;i<78;i++)
     {
-        $("#floor").append(`<span id="card" class="card" draggable="true"></span>`);
+        $("#floor").append(`<div class="empty"></div>`);
+        tableArray[i]=i;
     }
-
 }
 function setDeck(){
     let counter=0;
@@ -84,39 +84,38 @@ function setDeck(){
             if (i%2 === 1) {
                cardsArray.push({
                     "id": `${i}${cTI[j]}`,
-                    "card": `<span id="${i}${cTI[j]}" class="card" style="background-image:url('/pics/${rTC[i]}-0${cTI[j]}.svg')" color="${rTC[i]}" number="${cTI[j]}"></span>`,
+                    "card": `<div id="${i}${cTI[j]}" class="card" style="background-image:url('/pics/${rTC[i]}-0${cTI[j]}.svg')" color="${rTC[i]}" number="${cTI[j]}"></div>`,
                     "color": rTC[i],
-                    "number": `${cTI[j]}`
+                    "number": `${cTI[j]}`,
+                    "style":`background-image:url('/pics/${rTC[i]}-0${cTI[j]}.svg')`
                     
                 });
-               
-                
             } else {
                 cardsArray.push({
                     "id": `${i}${cTI[j]}`,
-                    "card": `<span id="${i}${cTI[j]}" class="card" draggable="true" style="background-image:url('/pics/${rTC[i]}-0${cTI[j]}.svg')" color="${rTC[i]}" number="${cTI[j]}"></span>`,
+                    "card": `<div id="${i}${cTI[j]}" class="card" draggable="true" style="background-image:url('/pics/${rTC[i]}-0${cTI[j]}.svg')" color="${rTC[i]}" number="${cTI[j]}"></div>`,
                     "color": rTC[i],
-                    "number": `${cTI[j]}`
+                    "number": `${cTI[j]}`,
+                    "style":`background-image:url('/pics/${rTC[i]}-0${cTI[j]}.svg')`
                 });
-                
             }
-
         }
     }
     cardsArray.push({
         "id": 0,
-        "card": `<span id="0" class="card" style="background-image:url('/pics/0.svg')" color="0" number="0"></span>`,
+        "card": `<div id="0" class="card" style="background-image:url('/pics/0.svg')" color="0" number="0"></div>`,
         "color": 0,
-        "number": `0`
+        "number": `0`,
+        "style":"background-image:url('/pics/0.svg')"
     });
     cardsArray.push({
         "id": 0,
-        "card": `<span id="0" class="card" style="background-image:url('/pics/0.svg')" color="0" number="0"></span>`,
+        "card": `<div id="0" class="card" style="background-image:url('/pics/0.svg')" color="0" number="0"></div>`,
         "color": 0,
-        "number": `0`
+        "number": `0`,
+        "style":"background-image:url('/pics/0.svg')"
     });
 }
-
 
 function Shuffle(cardsArray){
     for(i=0;i<cardsArray.length;i++)
@@ -165,10 +164,7 @@ function deal_cards(numberOfPlayers,Deck){
 }
 
 
-
-
 ////////////////////////////////in game//////////////////////////
-
 function draw(Deck){
     let temp
     if(deck.length==0){
@@ -183,6 +179,7 @@ function draw(Deck){
     }
    //dragNDrop();
    updateDeck();
+   turn();
 }
 
 function sort789()
@@ -231,30 +228,179 @@ const snap=()=>{
     deepClone(screenShot.remainDeck,remainDeck);
 }
 
- $(function(){
-     $(".floor").sortable();
+//  $(function(){
+//      $(".floor").sortable();
 
- });
+//  });
 //  $(function(){
 //     $(".board").sortable();
 
 // });
 
+//////////////////TEST ONE/////////////////
+// var container;
+// var draggables;
+// var floors;
+// function turn(){
+//     draggables=document.querySelectorAll('.card');
+//     containers=document.querySelectorAll('.board');
+//     floors=document.querySelectorAll('.floor')
+    
+    
+//     draggables.forEach(draggable => {
+//         draggable.addEventListener('dragstart',()=>{
+//             draggable.classList.add('dragging');
+//         })
+        
+//         draggable.addEventListener('dragend',()=>{
+//             draggable.classList.remove('dragging');
+//         })
+//     });
+    
+//     containers.forEach(container=>{
+//         container.addEventListener('dragover',e => {
+//             e.preventDefault();
+//             const afterElement=getDragAfterElement(container,e.clientY);
+//             //console.log('drag over');
+//             const draggable=document.querySelector('.dragging');
+//             container.appendChild(draggable);
+//         })
+//     })
+
+//     function getDragAfterElement(container,y)
+//     {
+//        const draggableElements= [...container.querySelectorAll('.card:not(.dragging)')]
+      
+//        return draggableElements.reduce((closest,child)=>{
+//         const box=child.getBoundingClientRect();
+//         const offset= y - box.top - box.height / 2
+//         //console.log(offset);
+        
+//         if(offset<0 && offset > closest.offset){
+//             return {offset:offset,element:child}
+//         }
+//         else{
+//             return closest
+//         }
+
+//        }
+//        ,{ offset:Number.NEGATIVE_INFINITY}).element;
+//     }
+// }
+
+
+//////////////////////////TEST TWO//////////////////////////////
+
+//fill Listeners
 function turn(){
+    $(function(){
+        $( "#floor" ).sortable(
+            {
+                cancel: ".ui-state-disabled"   
+        });
+    })
+
+
+    const fill = document.querySelectorAll('.card');
+    const empties=document.querySelectorAll('.empty');
+    var temp;
+    
+    for(const empty of empties){
+        console.log("empty!");
+        empty.addEventListener('dragover',dragOver);
+        empty.addEventListener('dragenter',dragEnter);
+        empty.addEventListener('dragleave',dragLeave);
+        empty.addEventListener('drop',dragDrop);
+    }
+    
+    fill.forEach(element => {
+        
+        element.addEventListener('dragstart',dragStart);
+    });
+    
+    fill.forEach(element => {
+        element.addEventListener('dragend',dragEnd);
+
+    });
+    //Drag Function
+
+    function dragStart(e){
+        
+        console.log('start');
+        console.log(this);
+        temp=this;
+        //this.className += 'hold';
+        //setTimeout(()=>(this.className ='invisible'),0)
+    }
+    function dragEnd(){
+        //this.className= 'card';
+        //setTimeout(()=>(this.className ='visible'),0)
+        console.log('end');
+
+    }
+   function dragOver(e)
+   {
+    e.preventDefault();
+    console.log('over');
+   }
+   function dragEnter()
+   {
+    console.log('enter');
+   } 
+   function dragLeave()
+   {
+    console.log('leave');
+   } 
+   function dragDrop(e)
+   {
+    console.log('drop');
+    const target=e.target;
+    const newDiv = document.createElement('div');
+    var tempcard=handPlayer0.find(item=>item.id===temp.id);
+    newDiv.id = temp.id; 
+    newDiv.className = temp.className;
+    newDiv.style= tempcard.style;
+    
+    console.log(tempcard.color);
+    
+    newDiv.color= tempcard.color;
+    newDiv.number=tempcard.number;
+    target.replaceWith(newDiv);
+    this.remove();
+   }
+   
+
+
+
+}
+
+
+
+//function turn(){
 
 
     //  $( ".board" ).sortable({
     //      revert: true
     //    });
-    $( ".board" ).draggable({
+    //$( ".card" ).draggable()//{
         //helper:"clone",
         //  connectToSortable: ".board",
-         drag:function(){
-            console.log('drag');
-         }
-    });
-      $( "div, span" ).disableSelection();
-}
+        //      drag:function(){
+        //      console.log('drag');
+        //   }
+
+
+    // $(".floor").each(card=>{
+    //         card.drag('drag',()=>{
+    //             console.log('drag');
+    //         })
+    //     })
+    // }
+    //);
+      //$( "div, span" ).disableSelection();
+      
+//}
+
     // $(".floor").droppable({
     //      drop:function(event,ui){
     //          var position=ui.position;
@@ -316,78 +462,6 @@ function turn(){
 
 // }
 
-
-
-
-
-
-
-
-
-
-//////handeling dragging//////
-
-
-
-
-
-
-
-
-
-
-// const makeCardDragable=()=>{
-//     console.log('makeCardDragable!');
-//     $('#card').on('drag',function(){
-//         console.log("#card is in");
-//         console.log(this);
-//         draggingDiv=$(this);
-//         console.log("draggingDiv",DraggingDiv);
-
-//     })
-    
-// }
-
-
-
-
-
-// playerBoard.forEach(board=>{
-//     board.addEventListener('dragstart',handleDragStart);
-//     board.addEventListener('dragend',handleDragEnd);
-// })
-
-// function handleDragStart(event){
-//     event.dataTransfer.setData('text',event.target.id);
-//     console.log('tileId:', event.target.id);
-//     event.target.style.opacity='0.5';
-// }
-
-
-// function handleDragEnd(event){
-//    event.target.style.opacity='1';
-// }
-
-// floor= document.getElementById('floor')
-//     floor.addEventListener('dragover',handleDragOver);
-//     floor.addEventListener('drop',handleDrop);
-
-// function handleDragOver(event)
-// {
-//     event.preventDefault();
-// }
-
-// function handleDrop(event){
-//     event.preventDefault();
-//     const tileId=event.dataTransfer.getData('text/plain');
-//     const tile=document.getElementById(tileId);
-//     console.log('tileId: ', tileId);
-//     console.log('tile: ', tile);
-
-//     if (event.target.id === 'floor') { // Check if the drop target is the "floor"
-//         event.target.appendChild(tile); 
-//     }
-// }
 
 
 

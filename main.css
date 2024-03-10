@@ -39,6 +39,12 @@ body{
    bottom: 0;
    left: 30%;
    position: absolute;
+   display: flex;
+    flex-wrap: wrap;
+    height: 159px;
+    width: 522px;
+    gap: 2px;
+    background-color: burlywood;
 
   }
 
@@ -48,6 +54,12 @@ body{
     top: 0;
     left: 30%;
     rotate: 180deg;
+    display: flex;
+    flex-wrap: wrap;
+    height: 159px;
+    width: 522px;
+    gap: 2px;
+    background-color: burlywood;
     
   }
   #player-2{
@@ -56,8 +68,20 @@ body{
     top:40%;
     
     rotate: 90deg;
+    display: flex;
+    flex-wrap: wrap;
+    height: 159px;
+    width: 522px;
+    gap: 2px;
+    background-color: burlywood;
   }
   #player-3{
+    display: flex;
+    flex-wrap: wrap;
+    height: 159px;
+    width: 522px;
+    gap: 2px;
+    background-color: burlywood;
     position: absolute;
 
     right: -12.8%;
@@ -128,16 +152,9 @@ body{
     left: 0;
   }
 
-  .board{
+  /* .board{
     
-    display: flex;
-    flex-wrap: wrap;
-    height: 159px;
-    width: 522px;
-    gap: 2px;
-    background-color: burlywood;
-    
-  }
+  } */
   /* .board2{
     
     display: flex;
@@ -163,7 +180,7 @@ body{
 
 #table
 {
-  width: 754px;
+  width: 818px;
   height: 480px;
   position: absolute;
   top:50%;
@@ -173,25 +190,28 @@ body{
 }
 #floor
 {
-  display: flex;
-  flex-wrap: wrap;
-  /* display: grid;
-  
+  /* display: flex;
+  flex-wrap: wrap; */
+  display: grid;
+  grid-gap: 5px;
   grid-template-columns: 58px 58px 58px 58px 58px 58px 58px 58px 58px 58px 58px 58px 58px;
-  grid-template-rows: 80px 80px 80px 80px 80px 80px; */
+  grid-template-rows: 80px 80px 80px 80px 80px 80px;
   
     border: 1px solid black;
     
-    
+}
 
+.dragging{
+  opacity: 0.5;
 }
 
 
-
-
-
-
-
+.empty{
+  border: solid 1px;
+  height: 76px;
+  width: 59px;
+  border-radius: 7px;
+}
 
 
 
